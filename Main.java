@@ -4,21 +4,240 @@ import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString(createSortedArray(10)));
+		// //System.out.println(Arrays.toString(createSortedArray(10)));
 
-		System.out.println(Arrays.toString(createReverseSortedArray(10)));
+		// //System.out.println(Arrays.toString(createReverseSortedArray(10)));
 
-		System.out.println(Arrays.toString(createRandomArray(10, 1, 1000)));
-		
-		long quicksortStartTime = System.currentTimeMillis();
-		
-		// **** Sorting ALgorithm here ****
-		
-		long quicksortEndTime = System.currentTimeMillis();
+		// //System.out.println(Arrays.toString(createRandomArray(10, 1, 1000)));
 
-		long quicksortDuration = (quicksortEndTime - quicksortStartTime);
+		int inputLength1 = 10;
+		int inputLength2 = 10000;
+		int inputlength3 = 100000;
+		int inputlength4 = 1000000;
+		int inputlength5 = 10000000;
+
+
+		/*
+		 * Array input lenght = 10
+		 */
+
+		// // sorted
+		// callMethod("sorted", inputLength1);
+
+		// // reverse sorted
+		// callMethod("reverseSorted", inputLength1);
+
+		// // sorted, one unsorted
+		// callMethod("sortedUnsortedElement", inputLength1);
+
+		// // reverse sorted, one unsorted
+		// callMethod("reverseSortedUnsortedElement", inputLength1);
+
+		// // random array
+		// callMethod("random", inputLength1);
+
+		/*
+		 * Array input lenght = 10000
+		 */
+
+		// // sorted
+		// callMethod("sorted", inputLength2);
+
+		// // reverse sorted
+		// callMethod("reverseSorted", inputLength2);
+
+		// // sorted, one unsorted
+		// callMethod("sortedUnsortedElement", inputLength2);
+
+		// // reverse sorted, one unsorted
+		// callMethod("reverseSortedUnsortedElement", inputLength2);
+
+		// // random array
+		// callMethod("random", inputLength2);
+
+		// /*
+		//  * Array input lenght = 100000
+		//  */
+
+		// sorted
+		callMethod("sorted", inputlength3);
+
+		// reverse sorted
+		callMethod("reverseSorted", inputlength3);
+
+		// sorted, one unsorted
+		callMethod("sortedUnsortedElement", inputlength3);
+
+		// reverse sorted, one unsorted
+		callMethod("reverseSortedUnsortedElement", inputlength3);
+
+		// random array
+		callMethod("random", inputlength3);
+
+		// /*
+		//  * Array input lenght = 1000000
+		//  */
+
+		// sorted
+		// callMethod("sorted", inputlength4);
+
+		// // reverse sorted
+		// callMethod("reverseSorted", inputlength4);
+
+		// // sorted, one unsorted
+		// callMethod("sortedUnsortedElement", inputlength4);
+
+		// // reverse sorted, one unsorted
+		// callMethod("reverseSortedUnsortedElement", inputlength4);
+
+		// // random array
+		// callMethod("random", inputlength4);
+
+		// /*
+		//  * Array input lenght = 10000000
+		//  */
+
+		// // sorted
+		// callMethod("sorted", inputlength5);
+
+		// // reverse sorted
+		// callMethod("reverseSorted", inputlength5);
+
+		// // sorted, one unsorted
+		// callMethod("sortedUnsortedElement", inputlength5);
+
+		// // reverse sorted, one unsorted
+		// callMethod("reverseSortedUnsortedElement", inputlength5);
+
+		// // random array
+		// callMethod("random", inputlength5);
+	}
+
+	public static void callMethod(String sortVariant, int inputLength){
+
+		int[] array;
+
+		// initialising Arrays
+
+		switch(sortVariant){
+			case "sorted":
+				array = createSortedArray(inputLength);
+
+				// callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+
+			break;
+
+			case "reverseSorted":
+				array = createReverseSortedArray(inputLength);
+
+				// callAndMeasureMergeSort(array, sortVariant, inputLength);
+				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+			break;
+
+			case "sortedUnsortedElement":
+				array = createSortedArrayWithOneUnsortedElement(inputLength);
+
+				// callAndMeasureMergeSort(array, sortVariant, inputLength);
+				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+			break;
+
+			case "reverseSortedUnsortedElement":
+				array = createReverseSortedArrayWithOneUnsortedElement(inputLength);
+
+				// callAndMeasureMergeSort(array, sortVariant, inputLength);
+				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+			break;
+
+			case "random":
+				array = createRandomArray(inputLength, 0, inputLength);
+
+				// callAndMeasureMergeSort(array, sortVariant, inputLength);
+				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+			break;
+
+			default:
+			System.out.println("Error: wrong sorting variant!");
+		}
+	}
+
+	public static void callAndMeasureMergeSort(int[]A, String sortVariant, int inputLength){
+		long startTime = System.currentTimeMillis();
 		
-		System.out.println("Quicksort | Duration in ms: " + quicksortDuration);
+		mergeSort(A, 0, A.length-1);
+
+		long endTime = System.currentTimeMillis();
+		long executionTime = (endTime - startTime);
+
+		printResults(sortVariant, "MergeSort", executionTime, inputLength);
+	}
+	
+	public static void callAndMeasureRadomizedQuicksort(int[]A, String sortVariant, int inputLength){
+		long startTime = System.currentTimeMillis();
+		
+		randomizedQuicksort(A, 0, A.length-1);
+
+		long endTime = System.currentTimeMillis();
+		long executionTime = (endTime - startTime);
+
+		printResults(sortVariant, "RandomizedQuicksort", executionTime, inputLength);
+	}
+	
+	public static void callAndMeasureCountingSort(int[]A, String sortVariant, int inputLength){
+		long startTime = System.currentTimeMillis();
+
+		int[] B = new int [A.length];
+		
+		int k = 0;
+		
+		for (int i = 0; i < A.length; i++) {
+			if(A[i] > k) {
+				k = A[i];
+			}
+		}
+
+		countingSort(A, B, k);
+
+		long endTime = System.currentTimeMillis();
+		long executionTime = (endTime - startTime);
+
+		printResults(sortVariant, "CountingSort", executionTime, inputLength);
+	}
+	
+	public static void callAndMeasureHeapSort(int[]A, String sortVariant, int inputLength){
+		long startTime = System.currentTimeMillis();
+		
+		heapSort(A);
+
+		long endTime = System.currentTimeMillis();
+		long executionTime = (endTime - startTime);
+
+		printResults(sortVariant, "HeapSort", executionTime, inputLength);
+	}
+
+	// Printing results to the console
+
+	public static void printResults(String sortVariant, String sortingAlgorithm, long executionTime, int inputLength){
+		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
+
+		System.out.println(
+			"Sorting Variant: " + sortVariant + "\n" +
+			"Sorting Algorithm: " + sortingAlgorithm + "\n" +
+			"Execution Time (in ms) : " + executionTime + "\n" +
+			"Input Length: " + inputLength + "\n"
+		);
+
+		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
 	}
 	
 	// Generating Arrays
@@ -61,7 +280,24 @@ public class Main {
 		return array;
 	}
 
+	public static int[] createReverseSortedArrayWithOneUnsortedElement(int length){
+		int[] array = new int [length];
+
+		Random r = new Random();
+
+		int randomIndex = r.nextInt(length - 0) + 0;
+
+		int temp = array[randomIndex];
+
+		array[randomIndex] = array[0];
+
+		array[0] = temp;
+
+		return array;
+	}
+
 	public static int[] createRandomArray(int length, int minRandom, int maxRandom) {
+		
 		int[] array = new int[length];
 
 		Random r = new Random();
@@ -73,17 +309,20 @@ public class Main {
 		return array;
 	}
 
+
 	// Sorting algorithms
 	
 	// MergeSort
 	
 	public static void mergeSort(int[] A, int start, int end){
-	    if(start < end){
-	        int mid = ( start + end ) / 2;
-	        mergeSort(A, start, mid);
-	        mergeSort(A, mid + 1, end);
-	        merge(A, start, mid, end);
-	    }
+		if(start < end){
+			int mid = ( start + end ) / 2;
+			mergeSort(A, start, mid);
+			mergeSort(A, mid + 1, end);
+			merge(A, start, mid, end);
+		}
+
+		// return A;
 	}
 
 	public static void merge(int[] A, int start, int mid, int end){
@@ -127,8 +366,8 @@ public class Main {
 		int i = p - 1; // index set to 0 - 1 => -1
 
 		for (int j = p; j < r; j++) {
-			System.out.println(A[j] + " <= " + x);
-			System.exit(0);
+			//System.out.println(A[j] + " <= " + x);
+			//System.exit(0);
 
 			if (A[j] <= x) { // checking if Elements are smaller or equal to the pivot
 
@@ -149,7 +388,7 @@ public class Main {
 
 	public static int[] quicksort(int[] A, int p, int r) {
 		if (p < r) {
-			System.out.println("P: " + p + " R: " + r);
+			//System.out.println("P: " + p + " R: " + r);
 			int q = partition(A, p, r);
 
 			quicksort(A, p, q - 1);
@@ -163,55 +402,55 @@ public class Main {
 		// int i = randomize(p, r);
 		int i = (int) (Math.random() * A.length);
 
-		// System.out.println(i);
+		// //System.out.println(i);
 
 		int tmp = A[i];
-		// System.out.println(A[r]);
+		// //System.out.println(A[r]);
 		A[i] = A[r];
 		A[r] = tmp;
 
-		// System.out.println(A[r]);
+		// //System.out.println(A[r]);
 
 		return partition(A, p, r);
 	}
 
-	public static int[] randomizedQuicksort(int[] A, int p, int r) {
+	public static void randomizedQuicksort(int[] A, int p, int r) {
 		if (p < r) {
 			int q = randomizedPartition(A, p, r);
 
 			quicksort(A, p, q - 1);
 			quicksort(A, q + 1, r);
 		}
-//		System.out.println(Arrays.toString(A));
-		return A;
+//		//System.out.println(Arrays.toString(A));
+		// return A;
 	}
 
 	// Counting Sort
 
-	public static int[] countingSort(int[] A, int[] B, int k) {
+	public static void countingSort(int[] A, int[] B, int k) {
 
 		int[] C = new int[k + 1];
-//		System.out.println(B.length);
+//		//System.out.println(B.length);
 
 		for (int j = 0; j < A.length; j++) {
 			C[A[j]]++;
 		}
 
-		System.out.println(Arrays.toString(C));
+		//System.out.println(Arrays.toString(C));
 
 		for (int i = 1; i <= k; i++) {
-//			System.out.println(C[i-1] + "+" + C[i]);
+//			//System.out.println(C[i-1] + "+" + C[i]);
 			C[i] = C[i] + C[i - 1];
 		}
 
-		System.out.println(Arrays.toString(C));
-//		System.out.println(A.length);
+		//System.out.println(Arrays.toString(C));
+//		//System.out.println(A.length);
 
-		int[] result = new int[12];
+		int[] result = new int[A.length + 1];
 
-		for (int j = A.length - 1; j >= 1; j--) {
-			// System.out.println(A[j]);
-//			System.out.println(B[C[A[j]]] + " = " + A[j]);
+		for (int j = A.length - 1; j >= 0; j--) {
+			// //System.out.println(A[j]);
+//			//System.out.println(B[C[A[j]]] + " = " + A[j]);
 
 			result[C[A[j]]] = A[j];
 
@@ -223,7 +462,7 @@ public class Main {
 			B[i - 1] = result[i];
 		}
 
-		return B;
+		// return B;
 	}
 	
 	// HeapSort
@@ -274,6 +513,8 @@ public class Main {
 
 			maxHeapify(A, i, 0);
 		}
+
+		// return A;
 	}
 
 }
