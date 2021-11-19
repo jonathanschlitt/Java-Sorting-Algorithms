@@ -123,8 +123,8 @@ public class Main {
 			case "sorted":
 				array = createSortedArray(inputLength);
 
-				// callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
-				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
 				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 
@@ -133,8 +133,8 @@ public class Main {
 			case "reverseSorted":
 				array = createReverseSortedArray(inputLength);
 
-				// callAndMeasureMergeSort(array, sortVariant, inputLength);
-				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array, sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
 				callAndMeasureCountingSort(array, sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
@@ -142,8 +142,8 @@ public class Main {
 			case "sortedUnsortedElement":
 				array = createSortedArrayWithOneUnsortedElement(inputLength);
 
-				// callAndMeasureMergeSort(array, sortVariant, inputLength);
-				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array, sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
 				callAndMeasureCountingSort(array, sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
@@ -151,8 +151,8 @@ public class Main {
 			case "reverseSortedUnsortedElement":
 				array = createReverseSortedArrayWithOneUnsortedElement(inputLength);
 
-				// callAndMeasureMergeSort(array, sortVariant, inputLength);
-				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array, sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
 				callAndMeasureCountingSort(array, sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
@@ -160,8 +160,8 @@ public class Main {
 			case "random":
 				array = createRandomArray(inputLength, 0, inputLength);
 
-				// callAndMeasureMergeSort(array, sortVariant, inputLength);
-				// callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array, sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
 				callAndMeasureCountingSort(array, sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
@@ -172,29 +172,40 @@ public class Main {
 	}
 
 	public static void callAndMeasureMergeSort(int[]A, String sortVariant, int inputLength){
-		long startTime = System.currentTimeMillis();
+		try {
+			long startTime = System.currentTimeMillis();
 		
-		mergeSort(A, 0, A.length-1);
+			mergeSort(A, 0, A.length-1);
+	
+			long endTime = System.currentTimeMillis();
+			long executionTime = (endTime - startTime);
+	
+			printResults(sortVariant, "MergeSort", ""+executionTime, inputLength);
+		} catch (StackOverflowError e) {
+			printResults(sortVariant, "MergeSort", ""+e, inputLength);
+		}
 
-		long endTime = System.currentTimeMillis();
-		long executionTime = (endTime - startTime);
-
-		printResults(sortVariant, "MergeSort", executionTime, inputLength);
 	}
 	
 	public static void callAndMeasureRadomizedQuicksort(int[]A, String sortVariant, int inputLength){
-		long startTime = System.currentTimeMillis();
+
+		try {
+			long startTime = System.currentTimeMillis();
 		
-		randomizedQuicksort(A, 0, A.length-1);
+			randomizedQuicksort(A, 0, A.length-1);
+	
+			long endTime = System.currentTimeMillis();
+			long executionTime = (endTime - startTime);
+	
+			printResults(sortVariant, "RandomizedQuicksort", ""+executionTime, inputLength);
+		} catch (StackOverflowError e) {
+			printResults(sortVariant, "RandomizedQuicksort", ""+e, inputLength);
+			//System.out.println(e);
+		}
 
-		long endTime = System.currentTimeMillis();
-		long executionTime = (endTime - startTime);
-
-		printResults(sortVariant, "RandomizedQuicksort", executionTime, inputLength);
 	}
 	
 	public static void callAndMeasureCountingSort(int[]A, String sortVariant, int inputLength){
-		long startTime = System.currentTimeMillis();
 
 		int[] B = new int [A.length];
 		
@@ -205,36 +216,49 @@ public class Main {
 				k = A[i];
 			}
 		}
+		
 
-		countingSort(A, B, k);
+		try {
+			long startTime = System.currentTimeMillis();
 
-		long endTime = System.currentTimeMillis();
-		long executionTime = (endTime - startTime);
-
-		printResults(sortVariant, "CountingSort", executionTime, inputLength);
+			countingSort(A, B, k);
+	
+			long endTime = System.currentTimeMillis();
+			long executionTime = (endTime - startTime);
+	
+			printResults(sortVariant, "CountingSort", ""+executionTime, inputLength);
+		} catch (StackOverflowError e) {
+			printResults(sortVariant, "CountingSort", ""+e, inputLength);
+		}
 	}
 	
 	public static void callAndMeasureHeapSort(int[]A, String sortVariant, int inputLength){
-		long startTime = System.currentTimeMillis();
+
+		try {
+			long startTime = System.currentTimeMillis();
 		
-		heapSort(A);
+			heapSort(A);
+	
+			long endTime = System.currentTimeMillis();
+			long executionTime = (endTime - startTime);
+	
+			printResults(sortVariant, "HeapSort", ""+executionTime, inputLength);
+		} catch (StackOverflowError e) {
+			printResults(sortVariant, "HeapSort", ""+e, inputLength);
+		}
 
-		long endTime = System.currentTimeMillis();
-		long executionTime = (endTime - startTime);
-
-		printResults(sortVariant, "HeapSort", executionTime, inputLength);
 	}
 
 	// Printing results to the console
 
-	public static void printResults(String sortVariant, String sortingAlgorithm, long executionTime, int inputLength){
+	public static void printResults(String sortVariant, String sortingAlgorithm, String executionTime, int inputLength){
 		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
 
 		System.out.println(
 			"Sorting Variant: " + sortVariant + "\n" +
 			"Sorting Algorithm: " + sortingAlgorithm + "\n" +
 			"Execution Time (in ms) : " + executionTime + "\n" +
-			"Input Length: " + inputLength + "\n"
+			"Input Length: " + inputLength
 		);
 
 		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
