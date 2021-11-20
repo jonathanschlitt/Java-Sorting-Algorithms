@@ -78,7 +78,7 @@ public class Main {
 		//  * Array input lenght = 1000000
 		//  */
 
-		// sorted
+		// //sorted
 		// callMethod("sorted", inputlength4);
 
 		// // reverse sorted
@@ -124,7 +124,7 @@ public class Main {
 				array = createSortedArray(inputLength);
 
 				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
-				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
 				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 
@@ -133,36 +133,36 @@ public class Main {
 			case "reverseSorted":
 				array = createReverseSortedArray(inputLength);
 
-				callAndMeasureMergeSort(array, sortVariant, inputLength);
-				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
-				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
 			case "sortedUnsortedElement":
 				array = createSortedArrayWithOneUnsortedElement(inputLength);
 
-				callAndMeasureMergeSort(array, sortVariant, inputLength);
-				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
-				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
 			case "reverseSortedUnsortedElement":
 				array = createReverseSortedArrayWithOneUnsortedElement(inputLength);
 
-				callAndMeasureMergeSort(array, sortVariant, inputLength);
-				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
-				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
 			case "random":
 				array = createRandomArray(inputLength, 0, inputLength);
 
-				callAndMeasureMergeSort(array, sortVariant, inputLength);
-				callAndMeasureRadomizedQuicksort(array, sortVariant, inputLength);
-				callAndMeasureCountingSort(array, sortVariant, inputLength);
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
