@@ -12,9 +12,9 @@ public class Main {
 
 		int inputLength1 = 10;
 		int inputLength2 = 10000;
-		int inputlength3 = 100000;
-		int inputlength4 = 1000000;
-		int inputlength5 = 10000000;
+		int inputLength3 = 100000;
+		int inputLength4 = 1000000;
+		int inputLength5 = 10000000;
 
 
 		/*
@@ -36,11 +36,17 @@ public class Main {
 		// // random array
 		// callMethod("random", inputLength1);
 
+		// // array with identical element
+		// callMethod("indenticalElements", inputLength1);
+
+		// // random with value range
+		// callMethod("valueRange", inputLength1);
+
 		/*
 		 * Array input lenght = 10000
 		 */
 
-		// // sorted
+		// sorted
 		// callMethod("sorted", inputLength2);
 
 		// // reverse sorted
@@ -55,62 +61,86 @@ public class Main {
 		// // random array
 		// callMethod("random", inputLength2);
 
+		// // array with identical element
+		// callMethod("indenticalElements", inputLength2);
+
+		// // random with value range
+		// callMethod("valueRange", inputLength2);
+
 		// /*
 		//  * Array input lenght = 100000
 		//  */
 
 		// sorted
-		callMethod("sorted", inputlength3);
+		callMethod("sorted", inputLength3);
 
 		// reverse sorted
-		callMethod("reverseSorted", inputlength3);
+		callMethod("reverseSorted", inputLength3);
 
 		// sorted, one unsorted
-		callMethod("sortedUnsortedElement", inputlength3);
+		callMethod("sortedUnsortedElement", inputLength3);
 
 		// reverse sorted, one unsorted
-		callMethod("reverseSortedUnsortedElement", inputlength3);
+		callMethod("reverseSortedUnsortedElement", inputLength3);
 
 		// random array
-		callMethod("random", inputlength3);
+		callMethod("random", inputLength3);
+
+		// array with identical element
+		callMethod("indenticalElements", inputLength3);
+
+		// random with value range
+		callMethod("valueRange", inputLength3);
 
 		// /*
 		//  * Array input lenght = 1000000
 		//  */
 
 		// //sorted
-		// callMethod("sorted", inputlength4);
+		// callMethod("sorted", inputLength4);
 
 		// // reverse sorted
-		// callMethod("reverseSorted", inputlength4);
+		// callMethod("reverseSorted", inputLength4);
 
 		// // sorted, one unsorted
-		// callMethod("sortedUnsortedElement", inputlength4);
+		// callMethod("sortedUnsortedElement", inputLength4);
 
 		// // reverse sorted, one unsorted
-		// callMethod("reverseSortedUnsortedElement", inputlength4);
+		// callMethod("reverseSortedUnsortedElement", inputLength4);
 
 		// // random array
-		// callMethod("random", inputlength4);
+		// callMethod("random", inputLength4);
+
+		// // array with identical element
+		// callMethod("indenticalElements", inputLength4);
+
+		// // random with value range
+		// callMethod("valueRange", inputLength4);
 
 		// /*
 		//  * Array input lenght = 10000000
 		//  */
 
 		// // sorted
-		// callMethod("sorted", inputlength5);
+		// callMethod("sorted", inputLength5);
 
 		// // reverse sorted
-		// callMethod("reverseSorted", inputlength5);
+		// callMethod("reverseSorted", inputLength5);
 
 		// // sorted, one unsorted
-		// callMethod("sortedUnsortedElement", inputlength5);
+		// callMethod("sortedUnsortedElement", inputLength5);
 
 		// // reverse sorted, one unsorted
-		// callMethod("reverseSortedUnsortedElement", inputlength5);
+		// callMethod("reverseSortedUnsortedElement", inputLength5);
 
 		// // random array
-		// callMethod("random", inputlength5);
+		// callMethod("random", inputLength5);
+
+		// // array with identical element
+		// callMethod("indenticalElements", inputLength5);
+
+		// // random with value range
+		// callMethod("valueRange", inputLength5);
 	}
 
 	public static void callMethod(String sortVariant, int inputLength){
@@ -165,6 +195,26 @@ public class Main {
 				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
+
+			// identical elements
+			case "indenticalElements":
+			array = createArrayWithIdenticalElements(inputLength, 0, inputLength);
+
+			callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+			callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+			callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
+			callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+			break;
+
+			// identical elements
+			case "valueRange":
+				array = createArrayWithValueRange(inputLength, 0, inputLength);
+
+				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
+				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
+				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+				break;
 
 			default:
 			System.out.println("Error: wrong sorting variant!");
@@ -332,6 +382,19 @@ public class Main {
 
 		return array;
 	}
+
+	public static int[] createArrayWithIdenticalElements(int length, int minRandom, int maxRandom){
+		int[] array = new int[length];
+
+		return array;
+	}
+
+	public static int[] createArrayWithValueRange(int length, int minRandom, int maxRandom){
+		int[] array = new int[length];
+
+		return array;
+	}
+
 
 
 	// Sorting algorithms
