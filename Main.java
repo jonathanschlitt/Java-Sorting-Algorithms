@@ -10,9 +10,9 @@ public class Main {
 
 		// //System.out.println(Arrays.toString(createRandomArray(10, 1, 1000)));
 
-		int inputLength1 = 10;
+		int inputLength3 = 10;
 		int inputLength2 = 10000;
-		int inputLength3 = 100000;
+		int inputLength1 = 100000;
 		int inputLength4 = 1000000;
 		int inputLength5 = 10000000;
 
@@ -385,13 +385,30 @@ public class Main {
 
 	public static int[] createArrayWithIdenticalElements(int length, int minRandom, int maxRandom){
 		int[] array = new int[length];
-
+		
+		// first half gets filled with random ints ranging from 1 to length
+		for (int i = 0; i < array.length / 2; i++) {
+		  int b = (int)(Math.random() * length + 1);
+		  array[i] = b;
+		}
+		
+		// second half repeats first half
+        for (int i = array.length / 2; i < array.length; i++) {
+          array[i] = array[i - array.length / 2];
+        }
+		
 		return array;
 	}
 
 	public static int[] createArrayWithValueRange(int length, int minRandom, int maxRandom){
 		int[] array = new int[length];
 
+		// array only gets filled with int values ranging from 1 to 5
+		for (int i = 0; i < array.length; i++) {
+		  int b = (int)(Math.random() * 5 + 1);
+          array[i] = b;
+        }
+		
 		return array;
 	}
 
