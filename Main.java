@@ -10,9 +10,9 @@ public class Main {
 
 		// //System.out.println(Arrays.toString(createRandomArray(10, 1, 1000)));
 
-		int inputLength3 = 10;
+		int inputLength1 = 10;
 		int inputLength2 = 10000;
-		int inputLength1 = 100000;
+		int inputLength3 = 100000;
 		int inputLength4 = 1000000;
 		int inputLength5 = 10000000;
 
