@@ -4,18 +4,25 @@ import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) {
-		// //System.out.println(Arrays.toString(createSortedArray(10)));
 
-		// //System.out.println(Arrays.toString(createReverseSortedArray(10)));
+		System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
+		System.out.println("createSortedArray:                               ==>  " + Arrays.toString(createSortedArray(10)) + "\n");
+		System.out.println("createReverseSortedArray:                        ==>  " + Arrays.toString(createReverseSortedArray(10)) + "\n");
+		System.out.println("createRandomArray:                               ==>  " + Arrays.toString(createRandomArray(10, 1, 10)) + "\n");
+		System.out.println("createSortedArrayWithOneUnsortedElement:         ==>  " + Arrays.toString(createSortedArrayWithOneUnsortedElement(10)) + "\n");
+		System.out.println("createReverseSortedArrayWithOneUnsortedElement:  ==>  " + Arrays.toString(createReverseSortedArrayWithOneUnsortedElement(10)) + "\n");
+		System.out.println("createArrayWithIdenticalElements:                ==>  " + Arrays.toString(createArrayWithIdenticalElements(10,0,10)) + "\n");
+		System.out.println("createArrayWithValueRange:                       ==>  " + Arrays.toString(createArrayWithValueRange(10,0,10)));
+		System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
 
-		// //System.out.println(Arrays.toString(createRandomArray(10, 1, 1000)));
+
+		// Variablen für die verschiedenen Eingabelängen
 
 		int inputLength1 = 10;
 		int inputLength2 = 10000;
 		int inputLength3 = 100000;
 		int inputLength4 = 1000000;
 		int inputLength5 = 10000000;
-
 
 		/*
 		 * Array input lenght = 10
@@ -46,55 +53,55 @@ public class Main {
 		 * Array input lenght = 10000
 		 */
 
-		// sorted
-		// callMethod("sorted", inputLength2);
+		sorted
+		callMethod("sorted", inputLength2);
 
-		// // reverse sorted
-		// callMethod("reverseSorted", inputLength2);
+		// reverse sorted
+		callMethod("reverseSorted", inputLength2);
 
-		// // sorted, one unsorted
-		// callMethod("sortedUnsortedElement", inputLength2);
+		// sorted, one unsorted
+		callMethod("sortedUnsortedElement", inputLength2);
 
-		// // reverse sorted, one unsorted
-		// callMethod("reverseSortedUnsortedElement", inputLength2);
+		// reverse sorted, one unsorted
+		callMethod("reverseSortedUnsortedElement", inputLength2);
 
-		// // random array
-		// callMethod("random", inputLength2);
+		// random array
+		callMethod("random", inputLength2);
 
-		// // array with identical element
-		// callMethod("indenticalElements", inputLength2);
+		// array with identical element
+		callMethod("indenticalElements", inputLength2);
 
-		// // random with value range
-		// callMethod("valueRange", inputLength2);
+		// random with value range
+		callMethod("valueRange", inputLength2);
 
 		// /*
 		//  * Array input lenght = 100000
 		//  */
 
-		// sorted
-		callMethod("sorted", inputLength3);
+		// // sorted
+		// callMethod("sorted", inputLength3);
 
-		// reverse sorted
-		callMethod("reverseSorted", inputLength3);
+		// // reverse sorted
+		// callMethod("reverseSorted", inputLength3);
 
-		// sorted, one unsorted
-		callMethod("sortedUnsortedElement", inputLength3);
+		// // sorted, one unsorted
+		// callMethod("sortedUnsortedElement", inputLength3);
 
-		// reverse sorted, one unsorted
-		callMethod("reverseSortedUnsortedElement", inputLength3);
+		// // reverse sorted, one unsorted
+		// callMethod("reverseSortedUnsortedElement", inputLength3);
 
-		// random array
-		callMethod("random", inputLength3);
+		// // random array
+		// callMethod("random", inputLength3);
 
-		// array with identical element
-		callMethod("indenticalElements", inputLength3);
+		// // array with identical element
+		// callMethod("indenticalElements", inputLength3);
 
-		// random with value range
-		callMethod("valueRange", inputLength3);
+		// // random with value range
+		// callMethod("valueRange", inputLength3);
 
-		// /*
-		//  * Array input lenght = 1000000
-		//  */
+		/*
+		 * Array input lenght = 1000000
+		 */
 
 		// //sorted
 		// callMethod("sorted", inputLength4);
@@ -196,7 +203,6 @@ public class Main {
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
-			// identical elements
 			case "indenticalElements":
 			array = createArrayWithIdenticalElements(inputLength, 0, inputLength);
 
@@ -206,7 +212,6 @@ public class Main {
 			callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
 			break;
 
-			// identical elements
 			case "valueRange":
 				array = createArrayWithValueRange(inputLength, 0, inputLength);
 
@@ -220,6 +225,8 @@ public class Main {
 			System.out.println("Error: wrong sorting variant!");
 		}
 	}
+
+	// Methoden zur Messung der Laufzeit der jeweiligen Algorithmen
 
 	public static void callAndMeasureMergeSort(int[]A, String sortVariant, int inputLength){
 		try {
@@ -299,7 +306,7 @@ public class Main {
 
 	}
 
-	// Printing results to the console
+	// Methode zum Anzeigen des Algorithmus, des Sortierungsgrades, der Laufzeit und die zugrundeliegende Ausgabelänge
 
 	public static void printResults(String sortVariant, String sortingAlgorithm, String executionTime, int inputLength){
 		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
@@ -314,7 +321,10 @@ public class Main {
 		System.out.println("\n" + "+++++++++++++++++++++++++++++" + "\n");
 	}
 	
-	// Generating Arrays
+	// Generierung der Arrays
+
+
+	// sortiertes Array
 
 	public static int[] createSortedArray(int length) {
 
@@ -328,6 +338,8 @@ public class Main {
 
 	}
 
+	// rückwärts sortiertes Array
+
 	public static int[] createReverseSortedArray(int length) {
 		int[] array = new int[length];
 
@@ -337,6 +349,8 @@ public class Main {
 
 		return array;
 	}
+
+	// sortiertes Array mit einem ungeordneten Element
 
 	public static int[] createSortedArrayWithOneUnsortedElement(int length) {
 		int[] array = createSortedArray(length);
@@ -354,8 +368,10 @@ public class Main {
 		return array;
 	}
 
+	// rückwärts sortiertes Array mit einem ungeordneten Element
+
 	public static int[] createReverseSortedArrayWithOneUnsortedElement(int length){
-		int[] array = new int [length];
+		int[] array = createReverseSortedArray(length);
 
 		Random r = new Random();
 
@@ -370,6 +386,8 @@ public class Main {
 		return array;
 	}
 
+	// randomisiertes Array
+
 	public static int[] createRandomArray(int length, int minRandom, int maxRandom) {
 		
 		int[] array = new int[length];
@@ -383,6 +401,8 @@ public class Main {
 		return array;
 	}
 
+	// Array mit identischen Elementen
+
 	public static int[] createArrayWithIdenticalElements(int length, int minRandom, int maxRandom){
 		int[] array = new int[length];
 		
@@ -393,12 +413,14 @@ public class Main {
 		}
 		
 		// second half repeats first half
-        for (int i = array.length / 2; i < array.length; i++) {
-          array[i] = array[i - array.length / 2];
-        }
+		for (int i = array.length / 2; i < array.length; i++) {
+			array[i] = array[i - array.length / 2];
+		}
 		
 		return array;
 	}
+
+	// Array mit Elementen eines eingeschränkten Wertebereiches
 
 	public static int[] createArrayWithValueRange(int length, int minRandom, int maxRandom){
 		int[] array = new int[length];
@@ -413,9 +435,9 @@ public class Main {
 	}
 
 
-
 	// Sorting algorithms
-	
+
+
 	// MergeSort
 	
 	public static void mergeSort(int[] A, int start, int end){
@@ -525,7 +547,7 @@ public class Main {
 			quicksort(A, p, q - 1);
 			quicksort(A, q + 1, r);
 		}
-//		//System.out.println(Arrays.toString(A));
+		//System.out.println(Arrays.toString(A));
 		// return A;
 	}
 
@@ -534,7 +556,7 @@ public class Main {
 	public static void countingSort(int[] A, int[] B, int k) {
 
 		int[] C = new int[k + 1];
-//		//System.out.println(B.length);
+		//System.out.println(B.length);
 
 		for (int j = 0; j < A.length; j++) {
 			C[A[j]]++;
@@ -543,18 +565,18 @@ public class Main {
 		//System.out.println(Arrays.toString(C));
 
 		for (int i = 1; i <= k; i++) {
-//			//System.out.println(C[i-1] + "+" + C[i]);
+		//System.out.println(C[i-1] + "+" + C[i]);
 			C[i] = C[i] + C[i - 1];
 		}
 
 		//System.out.println(Arrays.toString(C));
-//		//System.out.println(A.length);
+		//System.out.println(A.length);
 
 		int[] result = new int[A.length + 1];
 
 		for (int j = A.length - 1; j >= 0; j--) {
-			// //System.out.println(A[j]);
-//			//System.out.println(B[C[A[j]]] + " = " + A[j]);
+			//System.out.println(A[j]);
+			//System.out.println(B[C[A[j]]] + " = " + A[j]);
 
 			result[C[A[j]]] = A[j];
 
