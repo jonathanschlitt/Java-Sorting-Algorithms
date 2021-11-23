@@ -5,15 +5,15 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
-		System.out.println("createSortedArray:                               ==>  " + Arrays.toString(createSortedArray(10)) + "\n");
-		System.out.println("createReverseSortedArray:                        ==>  " + Arrays.toString(createReverseSortedArray(10)) + "\n");
-		System.out.println("createRandomArray:                               ==>  " + Arrays.toString(createRandomArray(10, 1, 10)) + "\n");
-		System.out.println("createSortedArrayWithOneUnsortedElement:         ==>  " + Arrays.toString(createSortedArrayWithOneUnsortedElement(10)) + "\n");
-		System.out.println("createReverseSortedArrayWithOneUnsortedElement:  ==>  " + Arrays.toString(createReverseSortedArrayWithOneUnsortedElement(10)) + "\n");
-		System.out.println("createArrayWithIdenticalElements:                ==>  " + Arrays.toString(createArrayWithIdenticalElements(10,0,10)) + "\n");
-		System.out.println("createArrayWithValueRange:                       ==>  " + Arrays.toString(createArrayWithValueRange(10,0,10)));
-		System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
+		// System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
+		// System.out.println("createSortedArray:                               ==>  " + Arrays.toString(createSortedArray(10)) + "\n");
+		// System.out.println("createReverseSortedArray:                        ==>  " + Arrays.toString(createReverseSortedArray(10)) + "\n");
+		// System.out.println("createRandomArray:                               ==>  " + Arrays.toString(createRandomArray(10, 1, 10)) + "\n");
+		// System.out.println("createSortedArrayWithOneUnsortedElement:         ==>  " + Arrays.toString(createSortedArrayWithOneUnsortedElement(10)) + "\n");
+		// System.out.println("createReverseSortedArrayWithOneUnsortedElement:  ==>  " + Arrays.toString(createReverseSortedArrayWithOneUnsortedElement(10)) + "\n");
+		// System.out.println("createArrayWithIdenticalElements:                ==>  " + Arrays.toString(createArrayWithIdenticalElements(10,0,10)) + "\n");
+		// System.out.println("createArrayWithValueRange:                       ==>  " + Arrays.toString(createArrayWithValueRange(10,0,10)));
+		// System.out.println("\n" + "****************** Example of array generating methods with length 10 ******************" + "\n");
 
 
 		// Variablen für die verschiedenen Eingabelängen
@@ -53,7 +53,7 @@ public class Main {
 		 * Array input lenght = 10000
 		 */
 
-		sorted
+		// sorted
 		callMethod("sorted", inputLength2);
 
 		// reverse sorted
@@ -74,9 +74,9 @@ public class Main {
 		// random with value range
 		callMethod("valueRange", inputLength2);
 
-		// /*
-		//  * Array input lenght = 100000
-		//  */
+		/*
+		 * Array input lenght = 100000
+		 */
 
 		// // sorted
 		// callMethod("sorted", inputLength3);
@@ -124,9 +124,9 @@ public class Main {
 		// // random with value range
 		// callMethod("valueRange", inputLength4);
 
-		// /*
-		//  * Array input lenght = 10000000
-		//  */
+		/*
+		 * Array input lenght = 10000000
+		 */
 
 		// // sorted
 		// callMethod("sorted", inputLength5);
@@ -170,10 +170,17 @@ public class Main {
 			case "reverseSorted":
 				array = createReverseSortedArray(inputLength);
 
+				// Cloning check
+				// System.out.println("Array Initialized: " + Arrays.toString(array));
+
 				callAndMeasureMergeSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureRadomizedQuicksort(array.clone(), sortVariant, inputLength);
 				callAndMeasureCountingSort(array.clone(), sortVariant, inputLength);
 				callAndMeasureHeapSort(array.clone(), sortVariant, inputLength);
+
+				// Cloning check
+				// System.out.println("Array after sort: " + Arrays.toString(array));
+				// System.exit(0);
 			break;
 
 			case "sortedUnsortedElement":
